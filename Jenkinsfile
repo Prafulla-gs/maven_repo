@@ -17,10 +17,21 @@ pipeline {
             }
         }
 	stage('Stage Three') {
-            steps {
-                echo 'Hello Stage Three - Step 1'
-		echo 'Hello Stage Three - Step 1'
-            }
+		parallel {
+			stage('Parallel1'){
+				steps {
+					echo 'Hello Stage Three - Step 1'
+		                        echo 'Hello Stage Three - Step 1'
+		                     }
+            
+                         }
+			stage('Parallel2'){
+				steps {
+					echo 'Hello Stage Three - Step 3'
+		                        echo 'Hello Stage Three - Step 4'
+		                     }
+			}
+		}
         }
     }
 }
